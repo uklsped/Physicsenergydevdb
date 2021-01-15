@@ -1,0 +1,28 @@
+﻿CREATE TABLE [dbo].[HandoverEnergies] (
+    [HandoverId]     INT            IDENTITY (1, 1) NOT NULL,
+    [MV6]            BIT            NULL,
+    [MV6FFF]         BIT            NULL,
+    [MV10]           BIT            NULL,
+    [MV10FFF]        BIT            NULL,
+    [MeV4]           BIT            NULL,
+    [MEV6]           BIT            NULL,
+    [MEV8]           BIT            NULL,
+    [MeV10]          BIT            NULL,
+    [MeV12]          BIT            NULL,
+    [MeV15]          BIT            NULL,
+    [MeV18]          BIT            NULL,
+    [MeV20]          BIT            NULL,
+    [Comment]        NVARCHAR (250) NULL,
+    [LogOutName]     NVARCHAR (10)  NULL,
+    [LogOutDate]     DATETIME       NULL,
+    [linac]          NVARCHAR (50)  NULL,
+    [LogInDate]      DATETIME       NULL,
+    [Duration]       DECIMAL (6, 2) NULL,
+    [LogInStatusID]  INT            NULL,
+    [Approved]       BIT            NULL,
+    [LogInName]      NVARCHAR (50)  NULL,
+    [LogOutStatusID] INT            NULL,
+    CONSTRAINT [PK_HandoverEnergies] PRIMARY KEY CLUSTERED ([HandoverId] ASC),
+    CONSTRAINT [FK_HandoverEnergies_LinacStatus] FOREIGN KEY ([LogOutStatusID]) REFERENCES [dbo].[LinacStatus] ([StateID])
+);
+
